@@ -10,6 +10,24 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Drizzle'),
+        /*flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: const LinearGradient(
+              begin: Alignment.topRight,
+              end: Alignment.bottomRight,
+              colors: [
+                Colors.purpleAccent,
+                Colors.blueAccent,
+              ],
+            ),
+          ),
+        ),*/
+      ),
+      body: ListView.builder(
+        itemBuilder: itemBuilder),
+    );
   }
 }
