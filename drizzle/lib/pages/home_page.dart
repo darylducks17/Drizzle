@@ -1,4 +1,5 @@
 import 'package:drizzle/data/drinks_data.dart';
+import 'package:drizzle/pages/drinks_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -44,7 +45,9 @@ class HomePageState extends State<HomePage> {
     Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => DrinksPage(),
+          builder: (context) => DrinksPage(
+            drinksName: drinksName,
+          ),
         ));
   }
 
@@ -100,7 +103,7 @@ class HomePageState extends State<HomePage> {
             title: Text(value.getDrinksList()[index].name),
             trailing: IconButton(
               icon: const Icon(Icons.arrow_forward),
-              onPressed: goToDrinksPage,
+              onPressed: () => goToDrinksPage(value.getDrinksList()[index].name),
             ),
           ),
         ),
