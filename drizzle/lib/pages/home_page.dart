@@ -21,18 +21,27 @@ class HomePageState extends State<HomePage> {
         builder: (context) {
           return AlertDialog(
             title: const Text("Other Drinks"),
+            backgroundColor: Colors.lightBlue,
+            shadowColor: Colors.lightBlueAccent,
             content: TextField(
               controller: newDrinksNameController,
+              cursorColor: Colors.blueGrey,
+              decoration: const InputDecoration(
+                  hintText: 'Type here',
+                  focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.blueGrey))),
             ),
             actions: [
               //save button
               MaterialButton(
                 onPressed: save,
+                highlightColor: Colors.lightBlueAccent,
                 child: const Text('Save'),
               ),
               //cancel button
               MaterialButton(
                 onPressed: cancel,
+                highlightColor: Colors.lightBlueAccent,
                 child: const Text('Cancel'),
               ),
             ],
@@ -80,33 +89,28 @@ class HomePageState extends State<HomePage> {
       builder: (context, value, child) => Scaffold(
         appBar: AppBar(
           title: const Text('Drizzle'),
-          /*flexibleSpace: Container(
-          decoration: BoxDecoration(
-            gradient: const LinearGradient(
-              begin: Alignment.topRight,
-              end: Alignment.bottomRight,
-              colors: [
-                Colors.purpleAccent,
-                Colors.blueAccent,
-              ],
-            ),
-          ),
-        ),*/
+          backgroundColor: Colors.lightBlue,
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: createNewDrinks,
+          backgroundColor: Colors.lightBlue,
           child: const Icon(Icons.add),
         ),
         body: ListView.builder(
           itemCount: value.getDrinksList().length,
-          itemBuilder: (context, index) => ListTile(
-            title: Text(value.getDrinksList()[index].name),
-            trailing: IconButton(
+          itemBuilder: (context, index) {
+            return Card (
+              child: ListTile(
+              tileColor: Colors.grey[200],
+              title: Text(value.getDrinksList()[index].name),
+              trailing: IconButton(
               icon: const Icon(Icons.arrow_forward),
-              onPressed: () => goToDrinksPage(value.getDrinksList()[index].name),
-            ),
-          ),
-        ),
+              onPressed: () =>
+                  goToDrinksPage(value.getDrinksList()[index].name),
+              ),
+            ));
+          }
+        ), 
       ),
     );
   }

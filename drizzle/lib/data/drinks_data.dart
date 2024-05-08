@@ -11,7 +11,12 @@ class DrinksData extends ChangeNotifier {
 
 //default drink
   List<Drinks> drinksList = [
-    Drinks(name: "Water", details: [Details(amount: "100")])
+    Drinks(name: "Water", details: [Details(amount: "100")]),
+    Drinks(name: "Coffee", details: [Details(amount: "100")]),
+    Drinks(name: "Tea", details: [Details(amount: "100")]),
+    Drinks(name: "Soda", details: [Details(amount: "100")]),
+    Drinks(name: "Alcohol", details: [Details(amount: "100")]),
+    
   ];
 
 //get list of drinks
