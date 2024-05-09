@@ -1,8 +1,10 @@
+import 'package:drizzle/data/hive_database.dart';
 import 'package:flutter/material.dart';
 import '../models/details.dart';
 import '../models/drinks.dart';
 
 class DrinksData extends ChangeNotifier {
+  final db = HiveDatabase();
   /*
   Drinks Data Structure 
   - This list contains the different drinks 
@@ -16,8 +18,18 @@ class DrinksData extends ChangeNotifier {
     Drinks(name: "Tea", details: [Details(amount: "100")]),
     Drinks(name: "Soda", details: [Details(amount: "100")]),
     Drinks(name: "Alcohol", details: [Details(amount: "100")]),
-    
   ];
+
+  //if there are drinks already in db, then get that list
+  void initialiseDrinksList() {
+    if (db.previousDataExists()) {
+      drinksList = db.readFromDatabase();
+    }
+    // otherwise use default
+    else {
+      db.saveToDatabase(drinksList);
+    }
+  }
 
 //get list of drinks
   List<Drinks> getDrinksList() {
@@ -35,6 +47,8 @@ class DrinksData extends ChangeNotifier {
     //add a new drink with a blank list of amount drank
     drinksList.add(Drinks(name: name, details: []));
     notifyListeners();
+    //save to db
+    db.saveToDatabase(drinksList);
   }
 
   //add amount drank to a drink
@@ -46,6 +60,8 @@ class DrinksData extends ChangeNotifier {
       Details(amount: detailsAmount),
     );
     notifyListeners();
+    //save to db
+    db.saveToDatabase(drinksList);
   }
 
   //check off amount in details
@@ -55,6 +71,8 @@ class DrinksData extends ChangeNotifier {
     relevantDetails.isCompleted = !relevantDetails.isCompleted;
 
     notifyListeners();
+    //save to db
+    db.saveToDatabase(drinksList);
   }
 
   //return relevant drinks object, given a drinks name
@@ -73,4 +91,10 @@ class DrinksData extends ChangeNotifier {
         .firstWhere((details) => details.amount == detailsAmount);
     return relevantDetails;
   }
+
+  //get start date
+  String getStartDate() {
+    return db.getStartDate();
+  }
+
 }

@@ -31,7 +31,7 @@ class DrinksPageState extends State<DrinksPage> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-          title: Text('Add Amount (ml)'),
+          title: const Text('Add Amount (ml)'),
           backgroundColor: Colors.lightBlue,
           shadowColor: Colors.lightBlueAccent,
           content: TextField(

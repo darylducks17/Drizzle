@@ -11,6 +11,12 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    Provider.of<DrinksData>(context, listen: false).initialiseDrinksList();
+  }
+
   //text controller
   final newDrinksNameController = TextEditingController();
 
@@ -96,21 +102,27 @@ class HomePageState extends State<HomePage> {
           backgroundColor: Colors.lightBlue,
           child: const Icon(Icons.add),
         ),
-        body: ListView.builder(
-          itemCount: value.getDrinksList().length,
-          itemBuilder: (context, index) {
-            return Card (
-              child: ListTile(
-              tileColor: Colors.grey[200],
-              title: Text(value.getDrinksList()[index].name),
-              trailing: IconButton(
-              icon: const Icon(Icons.arrow_forward),
-              onPressed: () =>
-                  goToDrinksPage(value.getDrinksList()[index].name),
-              ),
-            ));
-          }
-        ), 
+        body: ListView(
+          children: [
+            //drinks list
+            ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: value.getDrinksList().length,
+              itemBuilder: (context, index) {
+                return Card(
+                  child: ListTile(
+                  tileColor: Colors.grey[200],
+                  title: Text(value.getDrinksList()[index].name),
+                  trailing: IconButton(
+                  icon: const Icon(Icons.arrow_forward),
+                  onPressed: () =>
+                      goToDrinksPage(value.getDrinksList()[index].name),
+                ),
+              ));
+            }),
+          ]
+        )
       ),
     );
   }
