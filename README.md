@@ -23,10 +23,10 @@ aged 50 and over.
   <img src="https://s7.ezgif.com/tmp/ezgif-7-5c494d8ae2.gif"/>
 </div>
 
-# Download and see the application on VSCode
- - Ensure you have the latest version of Flutter installed on your device. 
- - Install Android Studio and set up an emulator that can be used in VSCode to view the application.
- - On VSCode, install the extensions required to run Flutter.
- - Type flutter pub get in the terminal to get all the packages used for this project. 
- - Run the main.dart file without debugging to view the application on the emulator.
+## Download and see Drizzle on Visual Studio Code (VSCode)
+ - Ensure you have the latest version of ```Flutter``` installed on your device. 
+ - Install ```Android Studio``` and set up an emulator that can be used in ```VSCode``` to view the mobile application.
+ - On ```VSCode```, install the extensions required to run ```Flutter```.
+ - Type ```flutter pub get``` in the terminal to get all the packages used for this project. 
+ - Run the ```main.dart``` file without debugging to view the mobile application on the emulator.
 
