@@ -19,9 +19,9 @@ This project contributes to the growing body of research on leveraging technolog
 aging and demonstrates the potential of mobile applications to address specific health needs of adults
 aged 50 and over.
 
-<div align=center>
-  <img src="https://s7.ezgif.com/tmp/ezgif-7-5c494d8ae2.gif"/>
-</div>
+<!--<div align=center>
+  <img src=""/>
+</div> !-->
 
 ## Download and see Drizzle on Visual Studio Code (VSCode)
  - Ensure you have the latest version of ```Flutter``` installed on your device. 
